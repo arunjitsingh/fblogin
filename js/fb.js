@@ -1,7 +1,11 @@
 window.fbAsyncInit = function() {
 FB.init({
+  // Production values
   appId      : '146114558905005', // App ID
   channelUrl : 'http://arunjitsingh.github.io/fblogin/channel.html', // Channel File
+  // Development values (localhost:8080)
+  //appId      : '502712879784507',
+  //channelUrl : 'http://localhost:8080/channel.html',
   status     : true, // check login status
   cookie     : true, // enable cookies to allow the server to access the session
   xfbml      : true  // parse XFBML
@@ -12,6 +16,7 @@ FB.init({
 // whenever someone who was previously logged out tries to log in again, the correct case below
 // will be handled.
 FB.Event.subscribe('auth.authResponseChange', function(response) {
+  console.log("auth.authResponseChange response:", response);
   // Here we specify what we do with the response anytime this event occurs.
   if (response.status === 'connected') {
     // The response object is returned with a status field that lets the app know the current
